@@ -1,4 +1,4 @@
-package com.spring.sboot;
+package com.spring.sboot.basic;
 
 public class App {
 

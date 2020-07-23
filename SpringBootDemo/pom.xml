@@ -4,6 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
+		<!-- spring-boot-starter-parent is a project starter. It provides default configurations for our applications. 
+		It is used internally by all dependencies. All Spring Boot projects use spring-boot-starter-parent as a parent in pom.xml file 
+		It inherits dependency management from spring-boot-dependencies.
+		The properties section defines the application default value, where We can also override parents value-->
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
@@ -14,9 +18,9 @@
 	<name>SpringBootDemo</name>
 	<description>Demo project for Spring Boot</description>
 
-	<properties>
+<!-- 	<properties>
 		<java.version>1.8</java.version>
-	</properties>
+	</properties> -->
 
 	<dependencies>
 		<dependency>
