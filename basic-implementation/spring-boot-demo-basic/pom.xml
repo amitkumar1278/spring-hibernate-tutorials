@@ -15,7 +15,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>spring-boot-demo-basic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringBootDemo</name>
+	<name>spring-boot-demo-basic</name>
 	<description>Demo project for Spring Boot</description>
 
 <!-- 	<properties>
