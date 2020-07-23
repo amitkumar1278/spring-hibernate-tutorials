@@ -1,6 +1,6 @@
 spring:  
   application:  
-    name: spring-boot-example  
+    name: spring-boot-app-without-initializer-basic  
     
 server:
   port: 9090
