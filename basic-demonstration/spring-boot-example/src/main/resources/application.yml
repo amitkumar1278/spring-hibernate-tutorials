@@ -1,0 +1,6 @@
+spring:  
+  application:  
+    name: spring-boot-example  
+    
+server:
+  port: 9090
