@@ -1,4 +1,4 @@
-/home/lucky/workspaces/test/spring-boot-jpa-h2-example/src/main/java/com/spring/sboot/controller/ControllerDemo.java
-/home/lucky/workspaces/test/spring-boot-jpa-h2-example/src/main/java/com/spring/sboot/SBJpaExampleApplication.java
-/home/lucky/workspaces/test/spring-boot-jpa-h2-example/src/main/java/com/spring/sboot/model/User.java
-/home/lucky/workspaces/test/spring-boot-jpa-h2-example/src/main/java/com/spring/sboot/model/Address.java
+/home/lucky/git/spring/basic-implementation/spring-boot-jpa-h2-example/src/main/java/com/spring/sboot/model/User.java
+/home/lucky/git/spring/basic-implementation/spring-boot-jpa-h2-example/src/main/java/com/spring/sboot/model/Address.java
+/home/lucky/git/spring/basic-implementation/spring-boot-jpa-h2-example/src/main/java/com/spring/sboot/SBJpaExampleApplication.java
+/home/lucky/git/spring/basic-implementation/spring-boot-jpa-h2-example/src/main/java/com/spring/sboot/controller/ControllerDemo.java
