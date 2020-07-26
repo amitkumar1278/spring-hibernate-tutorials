@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.spring</groupId>
-	<artifactId>sboot-app-without-initializer-example</artifactId>
+	<artifactId>sboot-demo-without-initializer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>sboot-app-without-initializer-example</name>
+	<name>sboot-demo-without-initializer</name>
 	<url>http://maven.apache.org</url>
 	<description>spring boot example</description>
 
