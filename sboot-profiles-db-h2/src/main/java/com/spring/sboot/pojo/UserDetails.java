@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table
+@Table(name="user_details")
 public class UserDetails {
 
     @Id
@@ -27,7 +27,9 @@ public class UserDetails {
 
 	/*
 	 * getters and setters goes here
-	 */    public int getId() {
+	 */    
+    
+    public int getId() {
         return id;
     }
 
