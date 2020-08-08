@@ -1,6 +1,6 @@
 		
 ###########################################################################
-Application Details
+Application Details::
 
 Currently Application is only connecting with H2 database	
 
@@ -23,4 +23,8 @@ Step 4: Click on the Connect button. It shows the structure of the table as per 
 
 Step 5: Execute select query using table name, data will appear as per "*.sql" file.
 		
+###########################################################################
+STEP TO EXECUTE Application AND OPEN JSP home page in BRPWSER:
+
+
 	
