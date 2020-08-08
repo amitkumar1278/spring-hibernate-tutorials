@@ -4,33 +4,31 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="user")
-public class User 
-{
+@Table(name = "user")
+public class User {
 	@Id
 	private int id;
 	private String username;
-	public int getId() 
-	{
+
+	public int getId() {
 		return id;
 	}
-	public void setId(int id) 
-	{
+
+	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUname() 
-	{
+
+	public String getUname() {
 		return username;
 	}
-	public void setUname(String username) 
-	{
+
+	public void setUname(String username) {
 		this.username = username;
 	}
+
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		return "User [id=" + id + ", uname=" + username + "]";
 	}
 }

@@ -10,6 +10,7 @@ Application details:
 	For example, 
 		in DEV, we do not need to constantly check database consistency. 
 		Whereas in TEST and STAGE, we need to. These environments host specific configurations called Profiles.
+		
 	
 Step 1:
 ==>>	How do we Maintain Profiles?
@@ -25,6 +26,7 @@ Step 1:
 	application.properties will remain as a master properties file, but if we override any key in the profile-specific file, the latter will gain precedence.
 	
 	
+	
 Step 2:		Specify in application.properties file which environment property needs to be loaded.
 	ex:
 		spring.profiles.active=prod
@@ -33,8 +35,10 @@ Step 2:		Specify in application.properties file which environment property needs
 	Here we are loading PROD properties when application gets booted.
 	
 	
+	
 Step 3:		Define DB configuration properties for in respective properties file and add code in "DBConfiguration.class" to pick the appropriate settings.
 	This will load the properties file as per the "spring.profiles.active" property we have mentioned in application.properties file.
+	
 	
 Step 4: 	You can connect to database as shown below –	
 	After executing in browser open:
@@ -48,6 +52,7 @@ Step 4: 	You can connect to database as shown below –
 	select "application-<profile>.properties" file for "jdbc url", "username" and password.
 	
 	in logs, you can see which profile database is loaded during application boot up.
+	
 	
 ==============================================================================================================
 like db details you can add any application related properties for selected environement.
