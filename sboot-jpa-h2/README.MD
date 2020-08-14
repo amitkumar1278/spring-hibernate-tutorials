@@ -2,7 +2,9 @@
 ###########################################################################
 Application Details::
 
-Currently Application is only connecting with H2 database	
+Currently Application is only connecting with H2 database.	
+Implemented Spring Spring Data Commons repository -: our Repository are extending CrudRepository
+Exposing different API related to User for CRUD operation using Spring JPA.
 
 
 
@@ -26,5 +28,24 @@ Step 5: Execute select query using table name, data will appear as per "*.sql" f
 ###########################################################################
 STEP TO EXECUTE Application AND OPEN JSP home page in BRPWSER:
 
-
+Open the browser and invoke the URL http://localhost:<port>/home/
 	
+
+###########################################################################
+
+SERVCIES:
+
+different API for following services we have been created:	
+
+1. USER
+	private int saveUser(@RequestBody User user) 
+	private List<User> getAllUsers() 
+	private User getUser(@PathVariable("userID") int userID) 
+	private User update(@RequestBody User user) 
+	private void deleteUser(@PathVariable("userID") int userID) 
+	
+
+for API call details follow "API-CALLS.MD".	
+	
+	
+

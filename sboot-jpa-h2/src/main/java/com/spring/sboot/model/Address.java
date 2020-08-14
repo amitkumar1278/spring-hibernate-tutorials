@@ -1,5 +1,6 @@
 package com.spring.sboot.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,9 +10,15 @@ import javax.persistence.Table;
 public class Address {
 
 	@Id
+	@Column
 	private int id;
+	@Column
 	private String addressType;
-	private String date;
+	@Column
+	private String startDate;
+	@Column
+	private String endDate;
+	@Column
 	private String address;
 
 	public int getId() {
@@ -30,12 +37,20 @@ public class Address {
 		this.addressType = addressType;
 	}
 
-	public String getDate() {
-		return date;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 
 	public String getAddress() {
@@ -48,7 +63,8 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", addressType=" + addressType + ", date=" + date + ", address=" + address + "]";
+		return "Address [id=" + id + ", addressType=" + addressType + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", address=" + address + "]";
 	}
 
 }
