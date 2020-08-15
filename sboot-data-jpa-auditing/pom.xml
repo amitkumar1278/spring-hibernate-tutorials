@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.spring.sboot</groupId>
-	<artifactId>spring-boot-data-jpa-h2-basic-example</artifactId>
+	<artifactId>sboot-data-jpa-auditing</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sboot-jpa-auditing</name>
+	<name>sboot-data-jpa-auditing</name>
 	<description>Demo spring data jpa project for Spring Boot</description>
 
 	<properties>
