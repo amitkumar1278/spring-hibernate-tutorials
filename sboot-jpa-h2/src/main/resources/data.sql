@@ -5,5 +5,4 @@ INSERT INTO user (id, userid, name, email, mobile, gender) values(104,'vinit', '
 INSERT INTO user (id, userid, name, email, mobile, gender) values(105,'ankit', 'Ankit Kumar', 'an@an.am', '5678901234', 'male');
 
 
-INSERT INTO address (id, address_type, start_date, end_date, address) values(201, 'home', '05-01-2019', '21-11-2020', 'hyderabad');
 
