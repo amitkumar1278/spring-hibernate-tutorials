@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -44,6 +45,16 @@ public class User implements Serializable {
 		this.name = name;
 		this.email = email;
 		this.password = password;
+	}
+	
+	
+
+	public User(String name, String email, String password, Address address) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.address = address;
 	}
 
 	public Long getId() {
@@ -116,6 +127,8 @@ public class User implements Serializable {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", address="
 				+ address + "]";
 	}
+
+
 	
 	
 	

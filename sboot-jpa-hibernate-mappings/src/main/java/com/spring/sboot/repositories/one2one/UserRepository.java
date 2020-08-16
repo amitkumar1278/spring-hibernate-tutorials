@@ -1,4 +1,4 @@
-package com.spring.sboot.repositories;
+package com.spring.sboot.repositories.one2one;
 
 import org.springframework.data.repository.CrudRepository;
 
