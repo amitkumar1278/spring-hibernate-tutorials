@@ -38,9 +38,10 @@ public class One2OneMappingStartupRunner implements CommandLineRunner {
 		address3.setUser(user3);
 		user3 = userRepository.save(user3);
 
-		User u1 = userRepository.findById(user3.getId()).get();
+		user3 = userRepository.findById(user3.getId()).get();
 		System.out.println("\n\n######################    Get user by ID    ##########################");
-		System.out.println(u1.toString() + "\n\n");
+		System.out.println(user3.toString() + "\n");
+
 
 		
 		/**
@@ -56,12 +57,14 @@ public class One2OneMappingStartupRunner implements CommandLineRunner {
 
 		userRepository.saveAll(Arrays.asList(user1, user2));
 
+		
+		
 		/**
 		 * retrieve all users into list 
 		 */
 		List<User> lstUsers2 = (List<User>) userRepository.findAll();
 		
-		System.out.println("\n\n######################    All Users are below  -> List user  ##########################");
+		System.out.println("\n######################    All Users are below  -> List user  ##########################");
 
 		lstUsers2.forEach(user -> {
 			System.out.println("name: "+user.getName()+", email: "+user.getEmail());
@@ -69,9 +72,23 @@ public class One2OneMappingStartupRunner implements CommandLineRunner {
 			System.out.println("---------------------------------------------\n");
 		});
 
+		
+		
+		User user4 = userRepository.findByEmail("am@am.com").get(0);
+		System.out.println("\n######################    Get user by email    ##########################");
+		System.out.println(user4.toString() + "\n");
+		
+		
+		user4.setName("Amit Updated");
+		userRepository.save(user4);
+		System.out.println("\n######################    User updated, Name : "+user4.getName()+"   ##########################\n");
+		
+		
 		System.out.println("\n######################    Deleting User having id: "+ user3.getId()+" & name: "+ user3.getName()+". ##########################\n");
 		userRepository.deleteById(user3.getId());
 
+		
+		
 		/**
 		 * retrieve all users into iterable
 		 */
@@ -80,6 +97,8 @@ public class One2OneMappingStartupRunner implements CommandLineRunner {
 				"\n\n######################    All Users are below  -> Iterable user  ##########################");
 		lstUsers1.forEach(System.out::println);
 
+		
+		
 		System.out.println("\n\n######################    One2One Mapping demonstration Ended    ##########################");
 		System.out.println("===========================================================================================\n\n");
 
