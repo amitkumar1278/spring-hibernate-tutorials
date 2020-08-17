@@ -74,4 +74,13 @@ public class BookService {
 		bookRepository.saveAll(books);
 	}
 
+	/**
+	 * getting a specific record by using the method getBookByTitle()
+	 */
+	@Transactional
+	public Book getBookByTitle(String title) {
+		Book book = bookRepository.findByTitle(title);
+		Hibernate.initialize(book.getPages());
+		return book;
+	}
 }

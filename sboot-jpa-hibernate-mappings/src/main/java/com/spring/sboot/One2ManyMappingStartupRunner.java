@@ -2,6 +2,7 @@ package com.spring.sboot;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -9,7 +10,9 @@ import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.annotation.Order;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Component;
 
 import com.spring.sboot.domains.one2many.Book;
@@ -18,7 +21,7 @@ import com.spring.sboot.repositories.one2many.BookRepository;
 import com.spring.sboot.repositories.one2many.PageRepository;
 import com.spring.sboot.service.one2many.BookService;
 
-@Order(value = 4)
+@org.springframework.core.annotation.Order(value = 4)
 @Component
 public class One2ManyMappingStartupRunner implements CommandLineRunner {
 
@@ -65,15 +68,13 @@ public class One2ManyMappingStartupRunner implements CommandLineRunner {
 				.collect(Collectors.toSet());
 		secretOfTheNagas.setPages(naagsPageSet);
 
-		
-		
 		Book theOathOfTheVayuputras = new Book("The Shiva Trilogy Book: The Oath of The Vayuputras", "Amish Tripathi", "ISBN-16: 9781681445045");
 		Page vayuputraPage1 =  new Page(1, "content 1", "first", theOathOfTheVayuputras);
 		Page vayuputraPage2 =  new Page(6, "content 6", "sixth", theOathOfTheVayuputras);
 		Page vayuputraPage3 =  new Page(7, "content 7", "seevnth", theOathOfTheVayuputras);
 		Set<Page> vayuputraPageSet = new HashSet<Page>(Arrays.asList(vayuputraPage1, vayuputraPage2, vayuputraPage3));
 		theOathOfTheVayuputras.setPages(vayuputraPageSet);
-
+		
 		
 		
 		bookService.saveAllBooks(Arrays.asList(secretOfTheNagas, theOathOfTheVayuputras));
@@ -90,18 +91,40 @@ public class One2ManyMappingStartupRunner implements CommandLineRunner {
 			});
 			System.out.println("---------------------------------------------\n");
 		});
+		System.out.println("---------------------------------------------\n");
 
 
+		
+		Book titledBook = bookService.getBookByTitle("The Shiva Trilogy Book: Secret of the Nagas ");
+		System.out.println("\n######################    get book by title: "+titledBook.getTitle()+"   ##########################");
+		System.out.println(titledBook.toString()+"\n\n");
 
 
-
-
-
-
+	
+		Order[] order = { new Order(Direction.ASC, "chapter"), new Order(Direction.ASC, "content") };		
+		List<Page> pagesOrder = pageRepository.findByBook(titledBook, Sort.by(order));
+		List<Page> pages = pageRepository.findByBook(titledBook, Sort.by(Direction.DESC, "content"));
+		
+		
+		System.out.println("\n######################    get pages by Book: "+titledBook.getTitle()+"  ##########################");
+		pages.forEach(page -> System.out.println(page.toString()));
+		System.out.println("------------------------------------------------------------\n");
+		pagesOrder.forEach(page -> System.out.println(page.toString()));
+		
+		
+		
+		
+		
 		System.out.println("\n\n######################    One2Many Mapping demonstration Ended    #########################");
 		System.out.println("===========================================================================================\n\n");
 
 
 	}
+	
+//	
+//	private Sort orderBy() {
+//	    return new Sort(Sort.Direction.DESC, "chapter")
+//	                .and(new Sort(Sort.Direction.ASC, "content"));
+//	}
 
 }

@@ -137,8 +137,7 @@ public class Page implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Page [id=" + id + ", number=" + number + ", content=" + content + ", chapter=" + chapter + ", book="
-				+ book + "]";
+		return "Page [id=" + id + ", number=" + number + ", content=" + content + ", chapter=" + chapter + "]";
 	}
 
 
