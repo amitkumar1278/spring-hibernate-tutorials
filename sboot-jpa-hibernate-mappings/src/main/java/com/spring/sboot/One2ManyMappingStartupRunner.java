@@ -121,10 +121,4 @@ public class One2ManyMappingStartupRunner implements CommandLineRunner {
 
 	}
 	
-//	
-//	private Sort orderBy() {
-//	    return new Sort(Sort.Direction.DESC, "chapter")
-//	                .and(new Sort(Sort.Direction.ASC, "content"));
-//	}
-
 }
