@@ -22,7 +22,6 @@ public class SbootJpaHibernateMappingApplication {
 	/**
 	 * testing post application start component
 	 */
-	@Order(value = 2)
 	@Bean
 	public CommandLineRunner mappinngDemo(UserRepository userRepository) {
 		return args -> {
