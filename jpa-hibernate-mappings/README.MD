@@ -52,15 +52,15 @@ We can map the above requirement as a one-to-one relationship between the user a
 
 **Relationship mapping parameter** 
 
-	**fetch** 
+	*fetch*
 		Defines a strategy for fetching data from the database. 
 		By default, it is EAGER which means that the data must be eagerly fetched. We have set it to LAZY to fetch the entities lazily from the database.
 		
-	**cascade** 
+	*cascade* 
 		Defines a set of cascadable operations that are applied to the associated entity. 
 		CascadeType.ALL means to apply all cascading operations to the related entity. Cascading operations are applied when you delete or update the parent entity.
 		
-	**mappedBy** 
+	*mappedBy* 
 		Defines the entity that owns the relationship which is the Address entity in our case.
 		optional — Defines whether the relationship is optional. If set to false then a non-null relationship must always exist.
 
