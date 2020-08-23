@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.spring.sboot</groupId>
-	<artifactId>sboot-jpa-hibernate-mappings</artifactId>
+	<artifactId>jpa-hibernate-mappings</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sboot-jpa-hibernate-mappings</name>
+	<name>jpa-hibernate-mappings</name>
 	<description>Demo spring data jpa, hibernate mappings project for Spring Boot</description>
 
 	<properties>
