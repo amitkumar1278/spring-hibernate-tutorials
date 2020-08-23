@@ -11,7 +11,6 @@ import com.spring.sboot.domains.composite.Account;
 import com.spring.sboot.domains.composite.AccountId;
 import com.spring.sboot.domains.composite.Employee;
 import com.spring.sboot.domains.composite.EmployeeId;
-import com.spring.sboot.domains.many2many.Course;
 import com.spring.sboot.repositories.composite.AccountRepository;
 import com.spring.sboot.repositories.composite.EmployeeRepository;
 
