@@ -38,27 +38,32 @@ We model the above relationship in the database by creating two tables, one for 
 ### Annotation & it's properties
 
 **@Table**
+	
 	The @Table annotation is used to specify the name of the database table that should be mapped to this entity.
 
 **@Id** and **@GeneratedVAlue**
+	
 	The id attributes are annotated with both @Id and @GeneratedValue annotations. 
 	The former annotation indicates that they are the primary keys of the entities. 
 	The latter annotation defines the primary key generation strategy. In most of the case, we use to declared that the primary key should be an AUTO INCREMENT field.
 
 
 **@OneToOne**
+	
 	In Spring Data JPA, a one-to-one relationship between two entities is declared by using the @OneToOne annotation.
 	In a bidirectional relationship, we have to specify the @OneToOne annotation in both entities. 
 	But only one entity is the owner of the association. Usually, the child entity is one that owns the relationship and the parent entity is the inverse side of the relationship.
 	refer **Relationship mapping parameter** to see list of accepted parameters.
 
 **@OneToMany** Annotation
+	
 	A one-to-many relationship between two entities is defined by using the @OneToMany annotation in Spring Data JPA. 
 	It declares the mappedBy element to indicate the entity that owns the bidirectional relationship. 
 	Usually, the child entity is one that owns the relationship and the parent entity contains the @OneToMany annotation.
 	refer **Relationship mapping parameter** to see list of accepted parameters.
 
 **@ManyToOne** Annotation
+	
 	The @ManyToOne annotation is used to define a many-to-one relationship between two entities in Spring Data JPA. 
 	The child entity, that has the join column, is called the owner of the relationship defined using the @ManyToOne annotation.
 	refer **Relationship mapping parameter** to see list of accepted parameters.
@@ -68,20 +73,24 @@ We model the above relationship in the database by creating two tables, one for 
 **Relationship mapping parameter** 
 
 **fetch**
+	
 	Defines a strategy for fetching data from the database. 
 	By default, it is EAGER which means that the data must be eagerly fetched. We have set it to LAZY to fetch the entities lazily from the database.
 
 **cascade** 
-		Defines a set of cascadable operations that are applied to the associated entity. 
-		CascadeType.ALL means to apply all cascading operations to the related entity. Cascading operations are applied when you delete or update the parent entity.
+	
+	Defines a set of cascadable operations that are applied to the associated entity. 
+	CascadeType.ALL means to apply all cascading operations to the related entity. Cascading operations are applied when you delete or update the parent entity.
 
 **mappedBy** 
+	
 	Defines the entity that owns the relationship which is the Address entity in our case.
 	optional — Defines whether the relationship is optional. If set to false then a non-null relationship must always exist.
 
 
 
 **@JoinColumn**
+	
 	The @JoinColumn annotation is used to specify the foreign key column in the owner of the relationship. 
 	The inverse-side of the relationship sets the @OneToOne's mappedBy parameter to indicate that the relationship is mapped by the other entity.
 	The @JoinColumn accepts the following two important parameters, among others:
