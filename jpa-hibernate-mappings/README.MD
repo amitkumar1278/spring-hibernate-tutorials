@@ -9,9 +9,9 @@ Spring Data JPA provides excellent support to create Spring-powered applications
 **Hibernate is the most popular** and widely used implementation of JPA specifications. By default, *Spring Data JPA uses Hibernate as a JPA provider*. Hibernate provides a framework for mapping relational database tables to entity classes in your application. 
 You can describe the relationships between these entities in a similar way as you define relationships among the tables in your relational database.
 
-In this application, you'll learn how to create a **one-to-one, one-to-many, many-to-one, many-to-many and composite key mapping** between two entities using Spring Data JPA in a Spring Boot and H2 application.
+In this application, we implemented **one-to-one, one-to-many, many-to-one, many-to-many and composite key mapping** between two entities using Spring Data JPA in a Spring Boot and H2 application.
 
-For **MySQL**, we need to manually define the database connection details in a properties file but by default, Spring Boot automatically configures the DataSource bean for in-memory databases like **H2 database**.
+For **MySQL**, we need to manually define the database connection details in a properties file but by default, Spring Boot automatically configures the DataSource bean for in-memory databases like **H2 database**,  **HSQLDB**, and **Apache Derby**.
 
 we have define some important property in **application.properties** file. Spring Boot will read these properties and will **auto-configure a DataSource bean** for you. 
 
@@ -25,6 +25,13 @@ We have also included the **createDatabaseIfNotExist=true** configuration proper
 A one-to-one relationship refers to the relationship between two entities/database tables A and B in which only one element/row of A may only be linked to one element/row of B, and vice versa.
 
 We can map the above requirement as a one-to-one relationship between the user and the address entities, The one-to-one relationship is defined by using a foreign key called user_id in the addresses table.
+
+
+### One-To-Many Relationship
+
+A one-to-many relationship refers to the relationship between two entities/tables A and B in which one element/row of A may only be linked to many elements/rows of B, but a member of B is linked to only one element/row of A.
+For instance, think of A as a book, and B as pages. A book can have many pages but a page can only exist in one book, forming a one-to-many relationship. The opposite of one-to-many is many-to-one relationship.
+We model the above relationship in the database by creating two tables, one for the books and another for the pages.
 
 
 
@@ -44,6 +51,18 @@ We can map the above requirement as a one-to-one relationship between the user a
 	In a bidirectional relationship, we have to specify the @OneToOne annotation in both entities. 
 	But only one entity is the owner of the association. Usually, the child entity is one that owns the relationship and the parent entity is the inverse side of the relationship.
 	refer **Relationship mapping parameter** to see list of accepted parameters.
+
+**@OneToMany** Annotation
+	A one-to-many relationship between two entities is defined by using the @OneToMany annotation in Spring Data JPA. 
+	It declares the mappedBy element to indicate the entity that owns the bidirectional relationship. 
+	Usually, the child entity is one that owns the relationship and the parent entity contains the @OneToMany annotation.
+	refer **Relationship mapping parameter** to see list of accepted parameters.
+
+**@ManyToOne** Annotation
+	The @ManyToOne annotation is used to define a many-to-one relationship between two entities in Spring Data JPA. 
+	The child entity, that has the join column, is called the owner of the relationship defined using the @ManyToOne annotation.
+	refer **Relationship mapping parameter** to see list of accepted parameters.
+
 
 
 **Relationship mapping parameter** 
@@ -74,10 +93,8 @@ We can map the above requirement as a one-to-one relationship between the user a
 	
 ### Create Repositories
 
-Finally, let us create our repository interfaces to save and retrieve our entities from the database. 
+Finally, let us create our repository interfaces to store and access the data from the database. 
 We'll extend our repositories from Spring Data JPA's CrudRepository interface which provides generic CRUD methods out-of-the-box.
 By doing this You're now ready to perform the CRUD operations on User and Address entities without implementing the above interfaces. This is what makes Spring Data JPA a very powerful tool
+we can also defined some derived query methods like **findBy<property name>(Property prop)** to fetch a record by passed property types value.
 
-
-
-	
