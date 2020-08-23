@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,7 +39,7 @@ public class Course implements Serializable {
 	@Column
 	private double fee;
 	
-	@ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private Set<Student> students = new HashSet<>();
 	
 	public Course() {}

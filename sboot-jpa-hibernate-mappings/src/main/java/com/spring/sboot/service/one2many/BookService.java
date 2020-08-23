@@ -24,7 +24,7 @@ public class BookService {
 	private EntityManager entityManager;
 
 	/**
-	 * getting all users record by using the method findaAll() of CrudRepository
+	 * getting all record by using the method findaAll() of CrudRepository
 	 */
 
 	@Transactional

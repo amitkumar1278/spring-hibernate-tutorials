@@ -8,7 +8,10 @@ import com.spring.sboot.domains.many2many.Course;
 
 public interface CourseRepository extends CrudRepository<Course, Long> {
 
-//    List<Course> findByTitleContaining(String title);
-//
-//    List<Course> findByFeeLessThan(double fee);
+	List<Course> findByTitleContaining(String title);
+
+	List<Course> findByFeeLessThan(double fee);
+
+	List<Course> findByAbbreviation(String abbreviation);
+	
 }

@@ -38,7 +38,7 @@ public class Student implements Serializable {
 	@Column
 	private String grade;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(name = "students_courses", 
 			joinColumns = {@JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false, updatable = false)},
 			inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false, updatable = false)}

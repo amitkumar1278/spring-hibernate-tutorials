@@ -8,6 +8,6 @@ import com.spring.sboot.domains.many2many.Student;
 
 public interface StudentRepository extends CrudRepository<Student, Long> {
 
-	//	List<Student> findByNameContaining(String name);
+		List<Student> findByNameContaining(String name);
 
 }
