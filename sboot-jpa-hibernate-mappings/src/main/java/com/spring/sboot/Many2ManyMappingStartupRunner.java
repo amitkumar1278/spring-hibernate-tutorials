@@ -26,6 +26,7 @@ public class Many2ManyMappingStartupRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		
 		// TODO Auto-generated method stub
 		System.out.println("\n\n=============================================================================================");
 		System.out.println("######################    Many2Many Mapping demonstration Started    #########################\n\n");
