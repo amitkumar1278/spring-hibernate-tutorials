@@ -5,9 +5,8 @@
 Spring Data JPA provides excellent support to create Spring-powered applications that communicate with different relational databases to implement JPA based repositories.
 
 **Java Persistence API (JPA)** is just a specification that defines an **object-relational mapping (ORM)** standard for *storing, accessing, and managing Java objects* in a relational database. 
-**Hibernate is the most popular** and widely used implementation of JPA specifications. By default, *Spring Data JPA uses Hibernate as a JPA provider*.
 
-Hibernate provides a framework for mapping relational database tables to entity classes in your application. 
+**Hibernate is the most popular** and widely used implementation of JPA specifications. By default, *Spring Data JPA uses Hibernate as a JPA provider*. Hibernate provides a framework for mapping relational database tables to entity classes in your application. 
 You can describe the relationships between these entities in a similar way as you define relationships among the tables in your relational database.
 
 In this application, you'll learn how to create a **one-to-one, one-to-many, many-to-one, many-to-many and composite key mapping** between two entities using Spring Data JPA in a Spring Boot and H2 application.
@@ -26,9 +25,6 @@ We have also included the **createDatabaseIfNotExist=true** configuration proper
 A one-to-one relationship refers to the relationship between two entities/database tables A and B in which only one element/row of A may only be linked to one element/row of B, and vice versa.
 
 We can map the above requirement as a one-to-one relationship between the user and the address entities, The one-to-one relationship is defined by using a foreign key called user_id in the addresses table.
-
-
-
 
 
 
@@ -51,16 +47,13 @@ We can map the above requirement as a one-to-one relationship between the user a
 
 
 **Relationship mapping parameter** 
-
-	*fetch*
+	**fetch**
 		Defines a strategy for fetching data from the database. 
 		By default, it is EAGER which means that the data must be eagerly fetched. We have set it to LAZY to fetch the entities lazily from the database.
-		
-	*cascade* 
+	**cascade** 
 		Defines a set of cascadable operations that are applied to the associated entity. 
 		CascadeType.ALL means to apply all cascading operations to the related entity. Cascading operations are applied when you delete or update the parent entity.
-		
-	*mappedBy* 
+	**mappedBy** 
 		Defines the entity that owns the relationship which is the Address entity in our case.
 		optional — Defines whether the relationship is optional. If set to false then a non-null relationship must always exist.
 
