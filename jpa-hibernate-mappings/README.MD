@@ -21,7 +21,7 @@ The Hibernate property **spring.jpa.hibernate.ddl-auto = create** will automatic
 We have also included the **createDatabaseIfNotExist=true** configuration property in spring.datasource.url to automatically create the database if it doesn't already exist.
 
 
-###One-To-One Relationship
+### One-To-One Relationship
 
 A one-to-one relationship refers to the relationship between two entities/database tables A and B in which only one element/row of A may only be linked to one element/row of B, and vice versa.
 
@@ -53,16 +53,16 @@ We can map the above requirement as a one-to-one relationship between the user a
 **Relationship mapping parameter** 
 
 	**fetch** 
-		— Defines a strategy for fetching data from the database. 
-		— By default, it is EAGER which means that the data must be eagerly fetched. We have set it to LAZY to fetch the entities lazily from the database.
+		Defines a strategy for fetching data from the database. 
+		By default, it is EAGER which means that the data must be eagerly fetched. We have set it to LAZY to fetch the entities lazily from the database.
 		
 	**cascade** 
-		— Defines a set of cascadable operations that are applied to the associated entity. 
-		— CascadeType.ALL means to apply all cascading operations to the related entity. Cascading operations are applied when you delete or update the parent entity.
+		Defines a set of cascadable operations that are applied to the associated entity. 
+		CascadeType.ALL means to apply all cascading operations to the related entity. Cascading operations are applied when you delete or update the parent entity.
 		
 	**mappedBy** 
-		— Defines the entity that owns the relationship which is the Address entity in our case.
-		— optional — Defines whether the relationship is optional. If set to false then a non-null relationship must always exist.
+		Defines the entity that owns the relationship which is the Address entity in our case.
+		optional — Defines whether the relationship is optional. If set to false then a non-null relationship must always exist.
 
 
 **@JoinColumn**
@@ -74,7 +74,7 @@ We can map the above requirement as a one-to-one relationship between the user a
 	
 	
 	
-###Create Repositories
+### Create Repositories
 
 Finally, let us create our repository interfaces to save and retrieve our entities from the database. 
 We'll extend our repositories from Spring Data JPA's CrudRepository interface which provides generic CRUD methods out-of-the-box.
