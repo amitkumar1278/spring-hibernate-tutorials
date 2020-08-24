@@ -20,14 +20,14 @@ The Hibernate property **spring.jpa.hibernate.ddl-auto = create** will automatic
 We have also included the **createDatabaseIfNotExist=true** configuration property in spring.datasource.url to automatically create the database if it doesn't already exist.
 
 
-### One-To-One Relationship
+## One-To-One Relationship
 
 A one-to-one relationship refers to the relationship between two entities/database tables A and B in which only one element/row of A may only be linked to one element/row of B, and vice versa.
 
 We can map the above requirement as a one-to-one relationship between the user and the address entities, The one-to-one relationship is defined by using a foreign key called user_id in the addresses table.
 
 
-### One-To-Many Relationship
+## One-To-Many Relationship
 
 A one-to-many relationship refers to the relationship between two entities/tables A and B in which one element/row of A may only be linked to many elements/rows of B, but a member of B is linked to only one element/row of A.
 
@@ -36,7 +36,7 @@ For instance, think of A as a book, and B as pages. A book can have many pages b
 We model the above relationship in the database by creating two tables, one for the books and another for the pages.
 
 
-### Many-To-Many Relationship
+## Many-To-Many Relationship
 
 A many-to-many relationship refers to the relationship between two entities/tables A and B in which one element/row of A may only be associated with many elements/rows of B and vice versa.
 
@@ -45,7 +45,7 @@ A typical example of such a many-to-many relationship is the relationship betwee
 We model the above relationship in the database by creating three tables, one each for both students and courses, and another one for holding relationship keys.
 
 
-### Annotation & it's properties
+## Annotation & it's properties
 
 **@Table**
 	
@@ -126,7 +126,7 @@ We model the above relationship in the database by creating three tables, one ea
 	he name of the join table is supposed to be the table names of the associated primary tables concatenated together (owning side first) using an underscore.
 
 	
-### Create Repositories
+## Create Repositories
 
 Finally, let us create our repository interfaces to store and access the data from the database. 
 We'll extend our repositories from Spring Data JPA's CrudRepository interface which provides generic CRUD methods out-of-the-box.
@@ -134,7 +134,7 @@ By doing this You're now ready to perform the CRUD operations on User and Addres
 we can also defined some derived query methods like **findBy<property name>(Property prop)** to fetch a record by passed property types value.
 
 
-=============================================================================================================
+=====================================================================================================
 
 # Spring Data JPA Composite Primary Key Mapping
 
@@ -146,7 +146,7 @@ We will explain how to map a composite primary key in a Spring Boot project usin
 
 
 
-# Mapping Composite Key using @IdClass Annotation
+## Mapping Composite Key using @IdClass Annotation
 
 Let us consider an application that manages different types of bank accounts. Each bank account has an account number and type (i.e. checking or saving), among other information. Now we want to create a compound key using this information to uniquely identify each account in the database.
 
@@ -197,7 +197,7 @@ With the @IdClass annotation, you can easily query data without using the name o
 	}
 
 
-# Mapping Composite Key using @EmbeddedId Annotation
+## Mapping Composite Key using @EmbeddedId Annotation
 
 
 In additional to @IdClass, Spring Data JPA provides another annotation — @EmbeddedId — to define a composite primary key.
@@ -253,7 +253,7 @@ Next, We can create a repository interface for retrieving Employee entities from
 
 
 
-**@IdClass vs @EmbeddedId**
+## @IdClass vs @EmbeddedId
 
 The main difference between @IdClass and @EmbeddedId annotations is that with @IdClass, you need to specify the primary key columns twice — once in the composite primary key class and then again in the entity class with the @Id annotation.
 
