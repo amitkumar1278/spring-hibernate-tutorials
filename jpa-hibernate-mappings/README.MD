@@ -79,7 +79,7 @@ We model the above relationship in the database by creating three tables, one ea
 	refer **Relationship mapping parameter** to see list of accepted parameters.
 
 
-@ManyToMany Annotation
+**@ManyToMany** Annotation
 
 	A many-to-many relationship between two entities is defined by using the @ManyToMany annotation in Spring Data JPA. 
 	It uses the mappedBy attribute to indicate the entity that owns the bidirectional relationship. 
@@ -134,7 +134,8 @@ By doing this You're now ready to perform the CRUD operations on User and Addres
 we can also defined some derived query methods like **findBy<property name>(Property prop)** to fetch a record by passed property types value.
 
 
-=================================================================================================================================
+=============================================================================================================
+
 # Spring Data JPA Composite Primary Key Mapping
 
 Above we explained different mappings having primary key was an single attribute for example "id". 
@@ -181,7 +182,8 @@ The next step is to create an Account entity class that declares all attributes 
 	
 	    private double balance;
 		
-	    // default constructor, parameterized constructor,  getters and setters, equals(), hashcode(), toString() .... (omitted)
+	    // default constructor, parameterized constructor,  getters and setters, equals(), 
+	    // hashcode(), toString() .... (omitted)
 	}
 
 
@@ -190,14 +192,12 @@ As you can see above, we have annotated the Account class with @IdClass to speci
 
 With the @IdClass annotation, you can easily query data without using the name of the composite key class. Let us first create a repository interface for this purpose:
 
-public interface AccountRepository extends CrudRepository<Account, AccountId> {
-    // TODO: add queries
-}
-
+	public interface AccountRepository extends CrudRepository<Account, AccountId> {
+    		// TODO: add queries
+	}
 
 
 # Mapping Composite Key using @EmbeddedId Annotation
-
 
 
 In additional to @IdClass, Spring Data JPA provides another annotation — @EmbeddedId — to define a composite primary key.
@@ -205,9 +205,10 @@ In additional to @IdClass, Spring Data JPA provides another annotation — @Embe
 Let us consider another example application that manages employees of a company with multiple departments. Each employee has a unique ID within his own department. But the same ID can be assigned to a different employee in another department. So we cannot uniquely identify an employee just by his employee ID.
 To uniquely identify an employee, we need to know his employee ID as well as his department ID. As you can see in the below Entity-Relationship (ER) diagram, the employees table contains a composite primary key that includes both employee_id and department_id columns.
 
-		**employeer**
-		*department_id*
-		*employment_id*
+		employee
+		============
+		department_id
+		employment_id
 		name
 		email
 		phone_number
@@ -242,7 +243,8 @@ The next step is to create the Employee class and embed the above composite prim
 	    private String phoneNumber;
 	
 	
-	     // default constructor, parameterized constructor,  getters and setters, equals(), hashcode(), toString() .... (omitted for brevity)
+	     // default constructor, parameterized constructor,  getters and setters, equals(), 
+	     // hashcode(), toString() .... (omitted for brevity)
 	}	
 	
 In the above Employee class, we have specified the composite key class using the @EmbeddedId annotation and mark it as a primary key of the entity.
@@ -264,6 +266,7 @@ Another difference between @IdClass and @EmbeddedId is when it comes to creating
 	With @EmbeddedId, you have to write more text for a similar query:
 
 	SELECT e.employeeId.departmentId FROM Employee e
-	The @IdClass annotation can be a preferred choice over @EmbeddedId in situations where the composite primary key class is not accessible or comes in from another module or legacy code. For such scenarios, where you cannot modify the composite key class, the @IdClass annotation is the only way-out.
+	The @IdClass annotation can be a preferred choice over @EmbeddedId in situations where the composite primary key class is not accessible or comes in from another module or legacy code. 
+	For such scenarios, where you cannot modify the composite key class, the @IdClass annotation is the only way-out.
 
 		
