@@ -10,4 +10,15 @@ public class JpaHibernateOperationApplication {
 		SpringApplication.run(JpaHibernateOperationApplication.class, args);
 	}
 
+	
+	/**
+	 * testing post application start component
+	 */
+//	@Bean
+//	public CommandLineRunner mappinngDemo(MovieRepository movieRepository) {
+//		return args -> {
+//
+//			System.out.println("in mappinngDemo");
+//		};
+//	}
 }

@@ -12,10 +12,10 @@ import com.spring.sboot.repositories.one2one.UserRepository;
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = { "com.spring.sboot.repositories" }) 
 @EntityScan(basePackages = { "com.spring.sboot.domains" })
-public class SbootJpaHibernateMappingApplication {
+public class JpaHibernateMappingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SbootJpaHibernateMappingApplication.class, args);
+		SpringApplication.run(JpaHibernateMappingApplication.class, args);
 	}
 
 	/**
