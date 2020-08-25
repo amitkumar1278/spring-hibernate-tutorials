@@ -1,6 +1,5 @@
 package com.spring.sboot;
 
-import java.awt.print.Pageable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import com.spring.sboot.specifications.domain.Movie;
@@ -50,9 +50,9 @@ public class SpecificationStartupRunner implements CommandLineRunner {
 				new Movie("The Shawshank Redemption", "Drama", 8.9, 144, 1994),
 				new Movie("The Ring", "Supernatural", 7.1, 145, 2002)
 				));
-		
-		
-		
+
+
+
 		/**
 		 * retrieve all movies into list 
 		 */
@@ -63,8 +63,8 @@ public class SpecificationStartupRunner implements CommandLineRunner {
 			System.out.println(movie.toString());
 		});
 		System.out.println("---------------------------------------------\n");
-		
-		
+
+
 		/**
 		 * Search Movie by genre
 		 */
@@ -74,8 +74,8 @@ public class SpecificationStartupRunner implements CommandLineRunner {
 		System.out.println("\n\n######################   movies by genre    ##########################");
 		mvGenreList.forEach(System.out::println);
 		System.out.println("---------------------------------------------\n");
-		
-		
+
+
 		/**
 		 * Search movie by title and rating
 		 */
@@ -86,8 +86,8 @@ public class SpecificationStartupRunner implements CommandLineRunner {
 		System.out.println("\n\n######################   movies by title and rating    ##########################");
 		mvTitleRatingList.forEach(System.out::println);
 		System.out.println("---------------------------------------------\n");
-		
-		
+
+
 		/**
 		 * search movies by release year < 2015 and rating > 8
 		 */
@@ -98,9 +98,9 @@ public class SpecificationStartupRunner implements CommandLineRunner {
 		System.out.println("\n\n######################   movies by Release year and rating    ##########################");
 		mvRYearRatingList.forEach(System.out::println);
 		System.out.println("---------------------------------------------\n");
-		
-		
-				
+
+
+
 		/**
 		 * search movies by watch time >= 145 and sort by title
 		 */
@@ -111,20 +111,47 @@ public class SpecificationStartupRunner implements CommandLineRunner {
 		mvWatchTimeList.forEach(System.out::println);
 		System.out.println("---------------------------------------------\n");
 
-		
-		
+
+
 		/**
 		 * Search movies by title <> white and paginate results
 		 */
-//		MovieSpecification mvTitle = new MovieSpecification();
-//		mvTitle.add(new SearchCriteria("title", "The", SearchOperation.NOT_EQUAL));
-//		Pageable pageable = (Pageable) PageRequest.of(0, 3, Sort.by("releaseYear").descending());
-//	    Page<Movie> msTitleList = movieRepository.findAll(mvTitle, pageable);
-//
-//         msTitleList.forEach(System.out::println);
-         
-         
+		MovieSpecification mvTitle = new MovieSpecification();
+		mvTitle.add(new SearchCriteria("title", "The", SearchOperation.NOT_EQUAL));
+		//		Pageable pageable = (Pageable) PageRequest.of(0, 3, Sort.by("releaseYear").descending());
+		PageRequest pageable2 = PageRequest.of(0, 3, Sort.by("releaseYear").descending());
+		Page<Movie> msTitleList = movieRepository.findAll(mvTitle, pageable2);
+		System.out.println("\n\n######################   movies by title and sorted by release year, showing in page request    ##########################");
+		msTitleList.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
 
+		
+		
+		MovieSpecification mvGenre2 = new MovieSpecification();
+		mvGenre2.add(new SearchCriteria("genre", "Action", SearchOperation.NOT_EQUAL));
+		
+		MovieSpecification mvRYearRating2 = new MovieSpecification();
+		mvRYearRating2.add(new SearchCriteria("releaseYear", 2015, SearchOperation.LESS_THAN));
+		mvRYearRating2.add(new SearchCriteria("rating", 8, SearchOperation.GREATER_THAN));
+		
+		/**
+		 *  combine using `AND` operator
+		 */
+		List<Movie> moviesWhereAND = movieRepository.findAll(Specification.where(mvGenre2).and(mvRYearRating2));
+		System.out.println("\n\n######################   movies by genre and rating using where clause and 'AND' operation    ##########################");
+		moviesWhereAND.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+		
+		
+		/**
+		 * combine using `OR` operator
+		 */
+		List<Movie> moviesWhereOR = movieRepository.findAll(Specification.where(mvGenre2).or(mvRYearRating2));
+		System.out.println("\n\n######################   movies by genre and rating using where clause and 'OR' operation    ##########################");
+		moviesWhereOR.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+		
+		
 		System.out.println("\n\n######################    JPA Specification Mapping demonstration Ended    ##########################");
 		System.out.println("===========================================================================================\n\n");
 
