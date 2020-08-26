@@ -1,6 +1,7 @@
-package com.ag.sjh.specifications.domain;
+package com.ag.sjh.queries.custom.domains;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,13 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Movie implements Serializable {
+public class Note implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -24,29 +25,25 @@ public class Movie implements Serializable {
 	private String title;
 	
 	@Column
-	private String genre;
+	private int priority;
 	
 	@Column
-	private double rating;
+	private boolean featured;
 	
 	@Column
-	private double watchTime;
-	
-	@Column
-	private int releaseYear;
+	Date created;
 
-	public Movie() {
+	public Note() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Movie(String title, String genre, double rating, double watchTime, int releaseYear) {
+	public Note(String title, int priority, boolean featured, Date created) {
 		super();
 		this.title = title;
-		this.genre = genre;
-		this.rating = rating;
-		this.watchTime = watchTime;
-		this.releaseYear = releaseYear;
+		this.priority = priority;
+		this.featured = featured;
+		this.created = created;
 	}
 
 	public Long getId() {
@@ -65,36 +62,28 @@ public class Movie implements Serializable {
 		this.title = title;
 	}
 
-	public String getGenre() {
-		return genre;
+	public int getPriority() {
+		return priority;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
-	public double getRating() {
-		return rating;
+	public boolean isFeatured() {
+		return featured;
 	}
 
-	public void setRating(double rating) {
-		this.rating = rating;
+	public void setFeatured(boolean featured) {
+		this.featured = featured;
 	}
 
-	public double getWatchTime() {
-		return watchTime;
+	public Date getCreated() {
+		return created;
 	}
 
-	public void setWatchTime(double watchTime) {
-		this.watchTime = watchTime;
-	}
-
-	public int getReleaseYear() {
-		return releaseYear;
-	}
-
-	public void setReleaseYear(int releaseYear) {
-		this.releaseYear = releaseYear;
+	public void setCreated(Date created) {
+		this.created = created;
 	}
 
 	@Override
@@ -113,7 +102,7 @@ public class Movie implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Movie other = (Movie) obj;
+		Note other = (Note) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -124,10 +113,10 @@ public class Movie implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", genre=" + genre + ", rating=" + rating + ", watchTime="
-				+ watchTime + ", releaseYear=" + releaseYear + "]";
+		return "Note [id=" + id + ", title=" + title + ", priority=" + priority + ", featured=" + featured
+				+ ", created=" + created + "]";
 	}
 	
 	
-	
+
 }

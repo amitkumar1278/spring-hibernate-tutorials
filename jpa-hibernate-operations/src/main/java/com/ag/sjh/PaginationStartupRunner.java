@@ -12,7 +12,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
-import com.ag.sjh.pagination.domain.Person;
+import com.ag.sjh.pagination.domains.Person;
 import com.ag.sjh.pagination.repositories.PersonRepository;
 
 @org.springframework.core.annotation.Order(value = 3)

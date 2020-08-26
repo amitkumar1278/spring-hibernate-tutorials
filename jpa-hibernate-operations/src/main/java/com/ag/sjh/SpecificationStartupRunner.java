@@ -11,7 +11,7 @@
 //import org.springframework.data.jpa.domain.Specification;
 //import org.springframework.stereotype.Component;
 //
-//import com.ag.sjh.specifications.domain.Movie;
+//import com.ag.sjh.specifications.domains.Movie;
 //import com.ag.sjh.specifications.repositories.MovieRepository;
 //import com.ag.sjh.specifications.repositories.specs.MovieSpecification;
 //import com.ag.sjh.specifications.repositories.specs.SearchCriteria;

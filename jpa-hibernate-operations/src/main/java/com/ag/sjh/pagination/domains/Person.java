@@ -1,7 +1,8 @@
-package com.ag.sjh.pagination.domain;
+package com.ag.sjh.pagination.domains;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,14 +11,22 @@ import javax.persistence.Id;
 @Entity
 public class Person implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column
 	private String firstName;
 	
+	@Column
 	private String lastName;
 	
+	@Column
 	private int age;
 
 	public Person() {

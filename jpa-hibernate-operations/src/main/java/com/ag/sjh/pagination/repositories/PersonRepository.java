@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.ag.sjh.pagination.domain.Person;
+import com.ag.sjh.pagination.domains.Person;
 
 public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
 

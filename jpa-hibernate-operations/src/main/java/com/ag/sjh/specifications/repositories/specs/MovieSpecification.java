@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import com.ag.sjh.specifications.domain.Movie;
+import com.ag.sjh.specifications.domains.Movie;
 
 public class MovieSpecification implements Specification<Movie> {
 
