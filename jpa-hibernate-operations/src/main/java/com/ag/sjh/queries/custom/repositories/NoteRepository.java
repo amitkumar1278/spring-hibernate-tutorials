@@ -6,4 +6,5 @@ import com.ag.sjh.queries.custom.domains.Note;
 
 public interface NoteRepository extends CrudRepository<Note, Long> {
 
+	
 }
