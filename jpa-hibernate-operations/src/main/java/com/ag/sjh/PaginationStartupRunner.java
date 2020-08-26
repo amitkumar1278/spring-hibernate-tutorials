@@ -69,7 +69,6 @@ public class PaginationStartupRunner implements CommandLineRunner {
         
         
             
-        
         /**
          * get all persons sorted by their age in the descending order
          */
