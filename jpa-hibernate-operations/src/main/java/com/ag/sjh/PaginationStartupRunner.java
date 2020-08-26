@@ -68,8 +68,7 @@ public class PaginationStartupRunner implements CommandLineRunner {
         System.out.println("---------------------------------------------\n");
         
         
-        
-        
+            
         
         /**
          * get all persons sorted by their age in the descending order
