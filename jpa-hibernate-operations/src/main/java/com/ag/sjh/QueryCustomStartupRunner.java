@@ -37,9 +37,10 @@ public class QueryCustomStartupRunner implements CommandLineRunner {
 				new Note("Gym", 4, false, new SimpleDateFormat("dd/MM/yyyy").parse("14/08/2020")),
 				new Note("Gym", 2, true, new SimpleDateFormat("dd/MM/yyyy").parse("14/09/2020")),
 				new Note("Swimming", 6, false, new SimpleDateFormat("dd/MM/yyyy").parse("13/07/2020")),
-				new Note("Swimming", 5, false, new SimpleDateFormat("dd/MM/yyyy").parse("13/07/2020")),
+				new Note("Swimming", 5, false, new SimpleDateFormat("dd/MM/yyyy").parse("13/08/2020")),
 				new Note("Swimming", 4, true, new SimpleDateFormat("dd/MM/yyyy").parse("13/09/2020")),
 				new Note("Temple", 4, true, new SimpleDateFormat("dd/MM/yyyy").parse("12/09/2020")),
+				new Note("Party", 4, false, new SimpleDateFormat("dd/MM/yyyy").parse("11/06/2020")),
 				new Note("party", 5, false, new SimpleDateFormat("dd/MM/yyyy").parse("11/07/2020")),
 				new Note("party", 6, false, new SimpleDateFormat("dd/MM/yyyy").parse("11/08/2020")),
 				new Note("party", 7, true, new SimpleDateFormat("dd/MM/yyyy").parse("11/09/2020")),
@@ -59,21 +60,29 @@ public class QueryCustomStartupRunner implements CommandLineRunner {
 		System.out.println("---------------------------------------------\n");
 
 		
-
-		List<Note> titleNotes = noteRepository.findByTitlePositionalBind("party");
+		/*** Find by title	*/
+		List<Note> titleNotes = noteRepository.findByTitlePositionalBind("Gym");
 		System.out.println("\n\n######################   notes by title ##########################");
 		titleNotes.forEach(System.out::println);
 		System.out.println("---------------------------------------------\n");
+
 		
 
+		List<Note> titleNamedNotes = noteRepository.findByTitleNamedBind("Swimming");
+		System.out.println("\n\n######################   notes by findByTitleNamedBind ##########################");
+		titleNamedNotes.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");		
+
+		
 		
 		List<Note> titleNotesAsc = noteRepository.findByTitle2("party", Sort.by("created").ascending());
 		System.out.println("\n\n######################   notes by title, sorted ascending ##########################");
 		titleNotesAsc.forEach(System.out::println);
 		System.out.println("---------------------------------------------\n");
+		/*** Find by title End */
 
-
-
+		
+		/*** Find by Priority	*/
 		List<Note> priorityDescNotes = noteRepository.findByPriority(4, Sort.by("created").descending());
 		System.out.println("\n\n######################   notes by Priority, sorted by priority descending ##########################");
 		priorityDescNotes.forEach(System.out::println);
@@ -85,17 +94,25 @@ public class QueryCustomStartupRunner implements CommandLineRunner {
 		System.out.println("\n\n######################   notes by Priority, sorted by length ##########################");
 		priorityLengthNotes.forEach(System.out::println);
 		System.out.println("---------------------------------------------\n");
+		
+		/*** Find by Priority End */
 
 
-
+		/**
+		 * Pagination
+		 */
 		Pageable pageable = PageRequest.of(0, 10, Sort.by("title").descending());
 		Page<Note> notePage = noteRepository.findAllNotesWithPagination(pageable);
 		System.out.println("\n\n######################   notes with pagination ##########################");
 		notePage.forEach(System.out::println);
 		System.out.println("---------------------------------------------\n");
+		
+		/*** Pagination end	*/
 
 
-
+		/**
+		 * Find by feature
+		 */
 		List<Note> activeNotes = noteRepository.findByActiveNotes();
 		System.out.println("\n\n######################   Active Notes ##########################");
 		activeNotes.forEach(System.out::println);
@@ -108,6 +125,94 @@ public class QueryCustomStartupRunner implements CommandLineRunner {
 		featuredNotesNative.forEach(System.out::println);
 		System.out.println("---------------------------------------------\n");
 
+		/*** Find by feature End */
+
+		
+		/**
+		 * Find by title and feature
+		 */
+		List<Note> titleAndFeaturedNotes = noteRepository.findByTitleAndFeaturedPositionalBind("Swimming", false);
+		System.out.println("\n\n######################   titleAndFeaturedPositionalBind Notes ##########################");
+		titleAndFeaturedNotes.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+		
+		
+		
+		List<Note> titleAndFeaturedNamedNotes = noteRepository.findByTitleAndFeaturedNamedBind(false, "Swimming");
+		System.out.println("\n\n######################   findByTitleAndFeaturedNamedBind Notes ##########################");
+		titleAndFeaturedNamedNotes.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+
+
+		
+		List<Note> titleAndFeaturedOrPriorityNotes = noteRepository.findByTitleAndFeaturedOrPriority("Swimming", false, 5);
+		System.out.println("\n\n######################   findByTitleAndFeaturedNamedBind Notes ##########################");
+		titleAndFeaturedOrPriorityNotes.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+		
+		/*** Find by title and feature End */
+
+		
+
+		System.out.println("\n\n######################   Custom Query using Operator Started ##########################");
+		System.out.println("\n\n###############################################################################");
+
+		/**
+		 * use of different type of operators started.
+		 */
+
+		List<Note> titleNotesEqual = noteRepository.findByTitle("party");
+		System.out.println("\n\n######################   notes by title ##########################");
+		titleNotesEqual.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+
+
+		List<Note> titleNotesIgnoreCaseOper = noteRepository.findByTitleIgnoreCase("party");
+		System.out.println("\n\n######################   notes by title, Ignore case ##########################");
+		titleNotesIgnoreCaseOper.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+
+
+		List<Note> titleNotesNotEqualOper = noteRepository.findByTitleNotEqual("party");
+		System.out.println("\n\n######################   notes by title, not equal ##########################");
+		titleNotesNotEqualOper.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+
+
+		List<Note> titleNotesLikeOper = noteRepository.findByTitleLike("party");
+		System.out.println("\n\n######################   notes by title, Like ##########################");
+		titleNotesLikeOper.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+
+
+		List<Note> priorityLessThanOper = noteRepository.findByPriorityLessThan(4);
+		System.out.println("\n\n######################   notes by priority, less than ##########################");
+		priorityLessThanOper.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+		
+		
+		List<Note> priorityGreaterThanOper = noteRepository.findByPriorityGreaterThan(4);
+		System.out.println("\n\n######################   notes by priority, Greater than ##########################");
+		priorityGreaterThanOper.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+		
+		
+		List<Note> priorityBetweenOper = noteRepository.findByPriorityBetween(3, 5);
+		System.out.println("\n\n######################   notes by priority, Between than ##########################");
+		priorityBetweenOper.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+
+
+		List<Note> createdBeforeOper = noteRepository.findByCreatedBefore(new SimpleDateFormat("dd/MM/yyyy").parse("01/08/2020"));
+		System.out.println("\n\n######################   notes by Created, Brfore ##########################");
+		createdBeforeOper.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
+		
+		
+		List<Note> createdAfterOper = noteRepository.findByCreatedAfter(new SimpleDateFormat("dd/MM/yyyy").parse("01/08/2020"));
+		System.out.println("\n\n######################   notes by Created, After ##########################");
+		createdAfterOper.forEach(System.out::println);
+		System.out.println("---------------------------------------------\n");
 
 
 
@@ -115,28 +220,8 @@ public class QueryCustomStartupRunner implements CommandLineRunner {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		System.out.println("\n\n######################   Custom Query using Operator Ended ##########################");
+		System.out.println("\n\n###############################################################################");
 
 
 
