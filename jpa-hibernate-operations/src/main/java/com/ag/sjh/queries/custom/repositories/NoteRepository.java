@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -98,7 +100,7 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
 	List<Note> findByTitleNotEqual(String title);
 	
 	/** Like / Contains / Starts With / Ends With */
-	@Query("SELECT n FROM Note n WHERE n.title LIKE ?1")
+	@Query("SELECT n FROM Note n WHERE n.title LIKE %?1%")
 	List<Note> findByTitleLike(String pattern);
 	
 	/** Less Than */
@@ -121,22 +123,9 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
 	@Query("SELECT n FROM Note n WHERE n.created > ?1")
 	List<Note> findByCreatedAfter(Date before);
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**///////////////////////////////////////////////////////////////////////////////
+	/** ///////////////////////////////////////////////////////////////////////////////
 	// below method is not implemented
-	////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////// */
 
 	/** Null */
 	@Query("SELECT n FROM Note n WHERE n.title IS NULL")
@@ -174,18 +163,22 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
 	 * ///////////////////////////////////////////////////////////////////////////////
 	 **/
 	@Modifying
+	@Transactional
 	@Query("UPDATE Note n SET n.title = ?1 WHERE n.id = ?2")
 	int updateTitleById(String title, Long id);
 
 	@Modifying
+	@Transactional
 	@Query("DELETE FROM Note n WHERE n.title = ?1")
 	void deleteByTitle(String title);
 
 	@Modifying
+	@org.springframework.transaction.annotation.Transactional
 	@Query("UPDATE Note n SET n.title = ?1 WHERE n.id IN ?2")
 	int bulkUpdateTitle(String title, Set<Long> id);
 
 	@Modifying
+	@org.springframework.transaction.annotation.Transactional
 	@Query("DELETE FROM Note n WHERE n.featured = ?1 AND n.id IN ?2")
 	void bulkDeleteByFeatured(boolean featured, Set<Long> id);
 
