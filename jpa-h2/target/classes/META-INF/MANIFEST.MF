@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 11
-Implementation-Title: sboot-jpa-h2
+Build-Jdk-Spec: 14
+Implementation-Title: jpa-h2
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor: Pivotal Software, Inc.
 Created-By: Maven Integration for Eclipse

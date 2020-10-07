@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 11
+Build-Jdk-Spec: 14
 Implementation-Title: sboot-hello-world-jsp
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor: Pivotal Software, Inc.
